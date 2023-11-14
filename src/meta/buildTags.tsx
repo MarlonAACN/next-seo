@@ -571,6 +571,36 @@ const buildTags = (config: BuildTagsParams) => {
             />,
           );
         }
+      } else if (type === 'product' && config.openGraph.product) {
+        if (config.openGraph.product.pluralTitle) {
+          tagsToRender.push(
+            <meta
+              key="product:plural_title"
+              property="product:plural_title"
+              content={config.openGraph.product.pluralTitle}
+            />,
+          );
+        }
+
+        if (config.openGraph.product.priceAmount) {
+          tagsToRender.push(
+            <meta
+              key="product:price:amount"
+              property="product:price:amount"
+              content={config.openGraph.product.priceAmount}
+            />,
+          );
+        }
+
+        if (config.openGraph.product.priceAmount) {
+          tagsToRender.push(
+            <meta
+              key="product:price:currency"
+              property="product:price:currency"
+              content={config.openGraph.product.priceCurrency}
+            />,
+          );
+        }
       }
     }
 

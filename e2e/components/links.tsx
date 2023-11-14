@@ -20,6 +20,9 @@ const Links = () => (
         <Link href="/profile">Profile SEO</Link>
       </li>
       <li>
+        <Link href="/product">Product SEO</Link>
+      </li>
+      <li>
         <Link href="/overridden">Overridden Seo</Link>
       </li>
       <li>

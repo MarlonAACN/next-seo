@@ -813,4 +813,77 @@ describe('SEO Meta', () => {
       'summary_large_image',
     );
   });
+
+  it('Product SEO loads correctly', () => {
+    cy.visit('http://localhost:3000/product');
+    cy.get('h1').should('contain', 'Product Page SEO');
+    cy.get('head title').should('contain', 'Product Page Title | Next SEO');
+    cy.get('head meta[name="description"]').should(
+      'have.attr',
+      'content',
+      'Description of product page',
+    );
+    cy.get('head meta[property="og:type"]').should(
+      'have.attr',
+      'content',
+      'product',
+    );
+    cy.get('head meta[property="product:plural_title"]').should(
+      'have.attr',
+      'content',
+      'Product titles',
+    );
+    cy.get('head meta[property="product:price:amount"]').should(
+      'have.attr',
+      'content',
+      '9.95',
+    );
+    cy.get('head meta[property="product:price:currency"]').should(
+      'have.attr',
+      'content',
+      'EUR',
+    );
+    cy.get('head meta[property="og:url"]').should(
+      'have.attr',
+      'content',
+      'https://www.example.com/products/product-title',
+    );
+    cy.get('head meta[property="og:title"]').should(
+      'have.attr',
+      'content',
+      'Open Graph Product Title',
+    );
+    cy.get('head meta[property="og:description"]').should(
+      'have.attr',
+      'content',
+      'Description of open graph product',
+    );
+    cy.get('head meta[property="og:image"]')
+      .should('have.length', 1)
+      .then(tags => {
+        expect(tags[0].content).to.equal(
+          'https://www.test.ie/og-image-product-title-01.jpg',
+        );
+      });
+    cy.get('head meta[property="og:image:alt"]')
+      .should('have.length', 1)
+      .then(tags => {
+        expect(tags[0].content).to.equal('Og Image Alt Product Title A');
+      });
+    cy.get('head meta[property="og:image:width"]')
+      .should('have.length', 1)
+      .then(tags => {
+        expect(tags[0].content).to.equal('50');
+      });
+    cy.get('head meta[property="og:image:height"]')
+      .should('have.length', 1)
+      .then(tags => {
+        expect(tags[0].content).to.equal('50');
+      });
+    cy.get('head meta[property="og:site_name"]').should(
+      'have.attr',
+      'content',
+      'SiteName',
+    );
+  });
 });

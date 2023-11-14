@@ -246,6 +246,7 @@ export interface OpenGraph {
   book?: OpenGraphBook;
   article?: OpenGraphArticle;
   video?: OpenGraphVideo;
+  product?: OpenGraphProduct;
 }
 
 export interface OpenGraphProfile {
@@ -280,6 +281,12 @@ export interface OpenGraphVideo {
   releaseDate?: string;
   tags?: ReadonlyArray<string>;
   series?: string;
+}
+
+export interface OpenGraphProduct {
+  pluralTitle?: string;
+  priceAmount?: string;
+  priceCurrency?: string;
 }
 
 export interface OpenGraphAudio {
